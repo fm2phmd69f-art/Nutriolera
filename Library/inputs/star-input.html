@@ -1,0 +1,42 @@
+<!-- Поля: оценка звёздами. Uiverse.io, автор PriyanshuGupta28, лицензия MIT. -->
+<div class="uv-star-input-rating">
+  <input value="5" name="uv-star-input-rating" id="uv-star-input-star5" type="radio">
+  <label for="uv-star-input-star5"></label>
+  <input value="4" name="uv-star-input-rating" id="uv-star-input-star4" type="radio">
+  <label for="uv-star-input-star4"></label>
+  <input value="3" name="uv-star-input-rating" id="uv-star-input-star3" type="radio">
+  <label for="uv-star-input-star3"></label>
+  <input value="2" name="uv-star-input-rating" id="uv-star-input-star2" type="radio">
+  <label for="uv-star-input-star2"></label>
+  <input value="1" name="uv-star-input-rating" id="uv-star-input-star1" type="radio">
+  <label for="uv-star-input-star1"></label>
+</div>
+
+<style>
+/* From Uiverse.io by PriyanshuGupta28. MIT License */
+
+.uv-star-input-rating {
+  display: inline-block;
+}
+
+.uv-star-input-rating input {
+  display: none;
+}
+
+.uv-star-input-rating label {
+  float: right;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.uv-star-input-rating label:before {
+  content: '\2605';
+  font-size: 30px;
+}
+
+.uv-star-input-rating input:checked ~ label, .uv-star-input-rating label:hover, .uv-star-input-rating label:hover ~ label {
+  color: #6f00ff;
+  transition: color 0.3s;
+}
+</style>

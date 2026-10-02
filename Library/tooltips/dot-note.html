@@ -1,0 +1,59 @@
+<!-- Подсказки: точка с заметкой. Uiverse.io, автор elijahgummer, лицензия MIT. -->
+<div class="uv-dot-note-tooltip-container">
+  <span class="uv-dot-note-tooltip">8 contributions on March 8th.</span>
+  <span class="uv-dot-note-text"></span>
+</div>
+
+<style>
+/* From Uiverse.io by elijahgummer. MIT License */
+
+.uv-dot-note-tooltip-container {
+  --background-tooltip-container: #2ea44f; 
+  position: relative;
+  background: var(--background-tooltip-container);
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 16px;
+  height: 16px;
+  border-radius: 6px;
+  font-size: 17px;
+}
+
+.uv-dot-note-tooltip {
+  --background-tooltip: #6e7681; 
+  position: absolute;
+  top: -39px; 
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  background: var(--background-tooltip);
+  color: white; 
+  border-radius: 5px;
+  width: 210px;
+  height: 30px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.uv-dot-note-tooltip::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  bottom: -0.2em;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  background: var(
+    --background-tooltip
+  ); 
+}
+
+.uv-dot-note-tooltip-container:hover .uv-dot-note-tooltip {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+</style>

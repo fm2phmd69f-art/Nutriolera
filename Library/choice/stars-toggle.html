@@ -1,0 +1,53 @@
+<!-- Выбор: звёзды оценки с заливкой. Uiverse.io, автор ForzDz, лицензия MIT. -->
+<div class="uv-stars-toggle-rating">
+  <input type="radio" id="uv-stars-toggle-star5" name="uv-stars-toggle-rating" value="5">
+  <label for="uv-stars-toggle-star5"></label>
+  <input type="radio" id="uv-stars-toggle-star4" name="uv-stars-toggle-rating" value="4">
+  <label for="uv-stars-toggle-star4"></label>
+  <input type="radio" id="uv-stars-toggle-star3" name="uv-stars-toggle-rating" value="3">
+  <label for="uv-stars-toggle-star3"></label>
+  <input type="radio" id="uv-stars-toggle-star2" name="uv-stars-toggle-rating" value="2">
+  <label for="uv-stars-toggle-star2"></label>
+  <input type="radio" id="uv-stars-toggle-star1" name="uv-stars-toggle-rating" value="1">
+  <label for="uv-stars-toggle-star1"></label>
+</div>
+
+<style>
+/* From Uiverse.io by ForzDz. MIT License */
+
+.uv-stars-toggle-rating {
+  display: inline-block;
+  opacity: 1;
+}
+
+.uv-stars-toggle-rating input {
+  display: none;
+  opacity: 1;
+}
+
+.uv-stars-toggle-rating label {
+  float: right;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.uv-stars-toggle-rating label:before {
+  content: '\2605';
+  font-size: 30px;
+  transition: color 0.3s;
+}
+
+.uv-stars-toggle-rating input:checked ~ label, .uv-stars-toggle-rating label:hover, .uv-stars-toggle-rating label:hover ~ label {
+  color: #ffc300;
+  transform: scale(1.2);
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+  animation: uv-stars-toggle-bounce 0.5s ease-in-out alternate;
+}
+
+@keyframes uv-stars-toggle-bounce {
+  to {
+    transform: scale(1.3);
+  }
+}
+</style>

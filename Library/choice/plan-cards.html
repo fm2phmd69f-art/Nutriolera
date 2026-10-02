@@ -1,0 +1,148 @@
+<!-- Выбор: карточки тарифов с ценой. Uiverse.io, автор andrew-demchenk0, лицензия MIT. -->
+<div class="uv-plan-cards-wrapper">
+  <div class="uv-plan-cards-card">
+    <input class="uv-plan-cards-input" type="radio" name="uv-plan-cards-card" value="basic">
+    <span class="uv-plan-cards-check"></span>
+    <label class="uv-plan-cards-label">
+      <div class="uv-plan-cards-title">BASIC</div>
+      <div class="uv-plan-cards-price">
+        <span class="uv-plan-cards-span">$</span>
+        15
+        <span class="uv-plan-cards-span">/month</span>
+      </div>
+    </label>
+  </div>
+  <div class="uv-plan-cards-card">
+    <input class="uv-plan-cards-input" type="radio" name="uv-plan-cards-card" value="standart">
+    <span class="uv-plan-cards-check"></span>
+    <label class="uv-plan-cards-label">
+      <div class="uv-plan-cards-title">STANDART</div>
+      <div class="uv-plan-cards-price">
+        <span class="uv-plan-cards-span">$</span>
+        30
+        <span class="uv-plan-cards-span">/month</span>
+      </div>
+    </label>
+  </div>
+  <div class="uv-plan-cards-card">
+    <input class="uv-plan-cards-input" type="radio" name="uv-plan-cards-card" value="premium">
+    <span class="uv-plan-cards-check"></span>
+    <label class="uv-plan-cards-label">
+      <div class="uv-plan-cards-title">PREMIUM</div>
+      <div class="uv-plan-cards-price">
+        <span class="uv-plan-cards-span">$</span>
+        60
+        <span class="uv-plan-cards-span">/month</span>
+      </div>
+    </label>
+  </div>
+</div>
+
+<style>
+/* From Uiverse.io by andrew-demchenk0. MIT License */
+
+.uv-plan-cards-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.uv-plan-cards-card {
+  position: relative;
+  width: 150px;
+  height: 100px;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.uv-plan-cards-card:hover {
+  transform: scale(1.05);
+}
+
+.uv-plan-cards-input {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  z-index: 10;
+  box-shadow: 1px 1px 10px #aaaaaa,
+              -1px -1px 10px #ffffff;
+}
+
+.uv-plan-cards-input + .uv-plan-cards-check::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #d0d0d0;
+  border-radius: 50%;
+  background-color: #E8E8E8;
+}
+
+.uv-plan-cards-input:checked + .uv-plan-cards-check::after {
+  content: '';
+  position: absolute;
+  top: 19px;
+  right: 19px;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255,0,0,0.7);
+  border-radius: 50%;
+}
+
+.uv-plan-cards-input[value="standart"]:checked + .uv-plan-cards-check::after {
+  background-color: rgba(255,165,0,0.7);
+}
+
+.uv-plan-cards-input[value="premium"]:checked + .uv-plan-cards-check::after {
+  background-color: rgba(0,128,0,0.7);
+}
+
+.uv-plan-cards-input[value="basic"]:checked {
+  border: 1.5px solid rgba(255,0,0,0.7);
+}
+
+.uv-plan-cards-input[value="standart"]:checked {
+  border: 1.5px solid rgba(255,165,0,0.7);
+}
+
+.uv-plan-cards-input[value="premium"]:checked {
+  border: 1.5px solid rgba(0,128,0,0.7);
+}
+
+.uv-plan-cards-label {
+  color: #323232;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.uv-plan-cards-label .uv-plan-cards-title {
+  margin: 15px 0 0 15px;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+}
+
+.uv-plan-cards-label .uv-plan-cards-price {
+  margin: 20px 0 0 15px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.uv-plan-cards-label .uv-plan-cards-span {
+  color: gray;
+  font-weight: 700;
+  font-size: 15px;
+}
+</style>

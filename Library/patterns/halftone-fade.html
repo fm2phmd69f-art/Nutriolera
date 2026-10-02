@@ -1,0 +1,27 @@
+<!-- Узоры: растровые точки с переходом. Uiverse.io, автор csemszepp, лицензия MIT. -->
+<div class="uv-halftone-fade-container"></div>
+
+<style>
+/* From Uiverse.io by csemszepp. MIT License */
+
+.uv-halftone-fade-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #fff;
+  filter: contrast(7);
+  --mask: linear-gradient(red, rgba(0, 0, 0, 0.45));
+}
+
+.uv-halftone-fade-container::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(#000, transparent) 0 0/1em 1em space;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  content: "";
+}
+</style>

@@ -1,0 +1,110 @@
+<!-- Переключатели: сегмент из двух вкладок. Uiverse.io, автор cbolson, лицензия MIT. -->
+<label for="uv-segmented-filter" class="uv-segmented-switch" aria-label="Toggle Filter">
+  <input type="checkbox" id="uv-segmented-filter" />
+  <span>Latest</span>
+  <span>Popular</span>
+</label>
+
+<style>
+/* From Uiverse.io by cbolson. MIT License */
+
+.uv-segmented-switch {
+  --_switch-bg-clr: #70a9c5;
+  --_switch-padding: 4px; 
+  --_slider-bg-clr: rgba(12, 74, 110, 0.65); 
+  --_slider-bg-clr-on: rgba(12, 74, 110, 1); 
+  --_slider-txt-clr: #ffffff;
+  --_label-padding: 1rem 2rem; 
+  --_switch-easing: cubic-bezier(
+    0.47,
+    1.64,
+    0.41,
+    0.8
+  ); 
+  color: white;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  position: relative;
+  isolation: isolate;
+}
+
+.uv-segmented-switch input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.uv-segmented-switch > span {
+  display: grid;
+  place-content: center;
+  transition: opacity 300ms ease-in-out 150ms;
+  padding: var(--_label-padding);
+}
+.uv-segmented-switch::before, .uv-segmented-switch::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  transition: inset 150ms ease-in-out;
+}
+
+.uv-segmented-switch::before {
+  background-color: var(--_slider-bg-clr);
+  inset: var(--_switch-padding) 50% var(--_switch-padding)
+    var(--_switch-padding);
+  transition:
+    inset 500ms var(--_switch-easing),
+    background-color 500ms ease-in-out;
+  z-index: -1;
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.3),
+    0 1px rgba(255, 255, 255, 0.3);
+}
+
+.uv-segmented-switch::after {
+  background-color: var(--_switch-bg-clr);
+  inset: 0;
+  z-index: -2;
+}
+
+.uv-segmented-switch:focus-within::after {
+  inset: -0.25rem;
+}
+.uv-segmented-switch:has(input:checked):hover > span:first-of-type, .uv-segmented-switch:has(input:not(:checked)):hover > span:last-of-type {
+  opacity: 1;
+  transition-delay: 0ms;
+  transition-duration: 100ms;
+}
+
+.uv-segmented-switch:has(input:checked):hover::before {
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
+    45%;
+}
+.uv-segmented-switch:has(input:not(:checked)):hover::before {
+  inset: var(--_switch-padding) 45% var(--_switch-padding)
+    var(--_switch-padding);
+}
+
+.uv-segmented-switch:has(input:checked)::before {
+  background-color: var(--_slider-bg-clr-on);
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
+    50%;
+}
+
+.uv-segmented-switch > span:last-of-type, .uv-segmented-switch > input:checked + span:first-of-type {
+  opacity: 0.75;
+}
+.uv-segmented-switch > input:checked ~ span:last-of-type {
+  opacity: 1;
+}
+</style>

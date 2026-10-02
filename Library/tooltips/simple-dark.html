@@ -1,0 +1,52 @@
+<!-- Подсказки: тёмная подсказка над кнопкой. Uiverse.io, автор G4b413l, лицензия MIT. -->
+<div class="uv-simple-dark-tooltip">
+  Hover me
+  <div class="uv-simple-dark-tooltiptext">Hi there !</div>
+</div>
+
+<style>
+/* From Uiverse.io by G4b413l. MIT License */
+
+.uv-simple-dark-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #282828;
+  color: #f1f1f1;
+  padding: 1em 3em;
+  border-radius: 1em;
+}
+
+.uv-simple-dark-tooltip .uv-simple-dark-tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #28282817;
+  color: #282828;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.uv-simple-dark-tooltip:hover .uv-simple-dark-tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.uv-simple-dark-tooltip .uv-simple-dark-tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #28282817 transparent transparent transparent;
+  transform: translateX(-50%);
+}
+</style>

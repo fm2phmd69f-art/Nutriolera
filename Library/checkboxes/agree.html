@@ -1,0 +1,68 @@
+<!-- Чекбоксы: галочка «Согласен» от руки. Uiverse.io, автор JOBOYA, лицензия MIT. -->
+<label class="uv-agree-checkbox">
+  <input type="checkbox">
+  <span class="uv-agree-checkmark"></span>
+  <span class="uv-agree-text">Agree</span>
+</label>
+
+<style>
+/* From Uiverse.io by JOBOYA. MIT License */
+
+.uv-agree-checkbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+.uv-agree-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.uv-agree-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  border: 2px solid #666;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.uv-agree-checkbox:hover .uv-agree-checkmark {
+  transform: translateX(-20px) translateY(-2px) rotate(10deg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.uv-agree-checkbox input:checked ~ .uv-agree-checkmark {
+  background-color: #666;
+  border-color: #666;
+}
+
+.uv-agree-checkbox input:checked ~ .uv-agree-checkmark:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 14px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.uv-agree-text {
+  margin-left: 40px;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+}
+</style>

@@ -1,0 +1,60 @@
+<!-- Подсказки: точка-«i» с пояснением. Uiverse.io, автор SmookyDev, лицензия MIT. -->
+<div class="uv-info-dot-tooltip">
+  <div class="uv-info-dot-icon">i</div>
+  <div class="uv-info-dot-tooltiptext">This is a cool tooltip!</div>
+</div>
+
+<style>
+/* From Uiverse.io by SmookyDev. MIT License */
+
+.uv-info-dot-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+}
+
+.uv-info-dot-tooltip:hover .uv-info-dot-tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.uv-info-dot-tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.uv-info-dot-tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}
+
+.uv-info-dot-tooltip .uv-info-dot-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+}
+</style>
