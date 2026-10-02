@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nutriolera — карта зон внимания для зубов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Onest:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#08304c; --ink-2:#3d5a70; --paper:#fff; --cloud:#f3f6fa;
+  --blue:#2597d0;
+  --g:#2fb67c; --y:#f2c230; --o:#fb8c3c; --r:#ea4f5a;
+  --round:"M PLUS Rounded 1c", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --text:"Onest", -apple-system, "Segoe UI", sans-serif;
+  --hand:"Caveat", "Comic Sans MS", cursive;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--text);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:8px}
+
+.sky{position:relative;min-height:100svh;padding:0 24px 0;
+  background:linear-gradient(180deg,#6f93bb 0%,#94b9d6 38%,#c4d9eb 64%,#eef4fa 82%,#fff 100%);
+  overflow:hidden}
+.sky::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 8%,rgba(255,255,255,.35),transparent 70%)}
+
+nav{position:relative;z-index:2;max-width:1200px;margin:0 auto;height:76px;display:flex;align-items:center;gap:32px}
+.logo{font-family:var(--round);font-weight:800;font-size:26px;letter-spacing:-.045em;color:#fff;display:inline-flex;align-items:baseline;line-height:1}
+.logo svg{width:.66em;height:.66em;margin:0 .02em;transform:translateY(.02em)}
+.links{display:flex;gap:28px;margin-left:auto;font-size:15px;font-weight:500;color:rgba(255,255,255,.92)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:100px;
+  background:#070709;color:#fff;font:500 15px/1 var(--text);letter-spacing:-.01em;border:0;cursor:pointer;
+  box-shadow:0 1px 2px rgba(36,36,40,.1),0 3px 3px rgba(36,36,40,.09),0 6px 4px rgba(36,36,40,.05),0 11px 4px rgba(36,36,40,.01);transition:transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.big{height:60px;padding:0 32px;font-size:17px}
+.btn .price{opacity:.6;font-weight:400}
+
+.head{position:relative;z-index:1;max-width:980px;margin:36px auto 0;text-align:center;color:#fff}
+h1{font-family:var(--round);font-weight:800;font-size:clamp(40px,6.2vw,84px);line-height:.96;letter-spacing:-.05em;text-wrap:balance;
+  text-shadow:0 1px 30px rgba(40,80,130,.18)}
+.lead{max-width:560px;margin:26px auto 0;font-size:19px;line-height:1.5;letter-spacing:-.01em;color:rgba(255,255,255,.94)}
+.cta{margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.cta small{font-size:14px;color:rgba(8,48,76,.7)}
+
+/* карточка результата */
+.sheet{position:relative;z-index:1;max-width:980px;margin:52px auto 0;background:#fff;border-radius:32px 32px 0 0;
+  padding:72px 48px 48px;display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:center;
+  box-shadow:0 17px 37px rgba(16,55,132,.05),0 67px 67px rgba(16,55,132,.04),0 -20px 60px rgba(16,55,132,.06)}
+.sheet .tag{position:absolute;top:-17px;left:48px;display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:100px;background:#fff;border:1px solid #08304c;font:500 13px/1 var(--text)}
+.sheet .tag svg{width:16px;height:16px;color:var(--blue)}
+.rose{width:100%;height:auto;display:block}
+.bars{display:grid;gap:14px}
+.bar{display:grid;grid-template-columns:120px 1fr 48px;align-items:center;gap:16px;font-size:15px}
+.bar .t{height:10px;border-radius:10px;background:#eef2f6;overflow:hidden}
+.bar .t i{display:block;height:100%;width:0;border-radius:10px}
+.bar b{font-family:var(--round);font-weight:800;font-size:18px;text-align:right;letter-spacing:-.03em}
+.note{position:absolute;left:150px;top:30px;font-family:var(--hand);font-size:28px;color:#c23a9b;transform:rotate(-4deg);line-height:1}
+.note svg{display:block;margin:2px 0 0 110px;width:60px;height:44px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+
+@media (max-width:860px){
+  .links{display:none}
+  nav .btn{height:42px;padding:0 18px;font-size:14px;margin-left:auto}
+  .head{margin-top:28px}
+  .lead{font-size:17px}
+  .sheet{grid-template-columns:1fr;padding:36px 20px 28px;gap:24px;margin-top:48px;border-radius:28px 28px 0 0}
+  .rose{max-width:260px;margin:0 auto}
+  .bar{grid-template-columns:96px 1fr 40px;gap:10px;font-size:14px}
+  .note{left:auto;right:16px;top:20px;font-size:22px}
+  .note svg{display:none}
+  .sheet .tag{left:20px}
+}
+@media (max-width:420px){
+  .sky{padding:0 16px}
+  nav{gap:12px}
+  .logo{font-size:23px}
+  .btn.big{height:56px;padding:0 26px;font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="sky">
+  <nav>
+    <a class="logo" href="#" aria-label="nutriolera">nutri<svg class="ring" viewBox="-50 -50 100 100" aria-hidden="true"></svg>lera</a>
+    <div class="links"><a href="#">Что внутри</a><a href="#">Автор</a><a href="#">Вопросы</a></div>
+    <a class="btn" href="#">Пройти тест</a>
+  </nav>
+
+  <div class="head">
+    <h1>Почему кариес возвращается после каждой пломбы?</h1>
+    <p class="lead">Ответьте на&nbsp;50 вопросов о&nbsp;питании, напитках, слюне и&nbsp;гигиене&nbsp;— и&nbsp;сразу увидите, какие привычки работают против ваших зубов и&nbsp;с&nbsp;чего начать.</p>
+    <div class="cta">
+      <a class="btn big" href="#">Пройти тест <span class="price">2&nbsp;500&nbsp;₽</span></a>
+      <small>Без записи и&nbsp;ожидания: результат сразу после ответов</small>
+    </div>
+  </div>
+
+  <div class="sheet" aria-label="Пример результата">
+    <span class="tag"><svg viewBox="0 0 256 256"><path fill="currentColor" d="M174 47.75a254.2 254.2 0 0 0-41.45-38.3a8 8 0 0 0-9.18 0A254.2 254.2 0 0 0 82 47.75C54.51 79.32 40 112.6 40 144a88 88 0 0 0 176 0c0-31.4-14.51-64.68-42-96.25M128 216a72.08 72.08 0 0 1-72-72c0-57.23 55.47-105 72-118c16.53 13 72 60.75 72 118a72.08 72.08 0 0 1-72 72"/></svg>Пример карты зон внимания</span>
+    <svg class="rose" viewBox="-120 -120 240 240" role="img" aria-label="Диаграмма зон внимания"></svg>
+    <div>
+      <div class="bars"></div>
+      <div class="legend">
+        <span style="--c:var(--g)">0–25% небольшая</span><span style="--c:var(--y)">26–50% умеренная</span><span style="--c:var(--o)">51–75% выраженная</span><span style="--c:var(--r)">76–100% высокая</span>
+      </div>
+    </div>
+    <div class="note">основная зона — напитки
+      <svg viewBox="0 0 70 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 2C10 20 26 32 52 38M52 38l-10-7M52 38l-11 3"/></svg>
+    </div>
+  </div>
+</header>
+
+<script>
+(function(){
+  var ZONES=[["Питание",24],["Напитки",61],["Слюна",44],["Гигиена",18],["Образ жизни",31],["Зубы",22]];
+  var cs=getComputedStyle(document.documentElement);
+  function col(p){return cs.getPropertyValue(p<=25?'--g':p<=50?'--y':p<=75?'--o':'--r').trim()}
+  var NS='http://www.w3.org/2000/svg';
+  function arc(r0,r1,a0,a1){
+    function pt(r,a){return (r*Math.cos(a)).toFixed(2)+' '+(r*Math.sin(a)).toFixed(2)}
+    var l=(a1-a0)>Math.PI?1:0;
+    return 'M'+pt(r0,a0)+'L'+pt(r1,a0)+'A'+r1+' '+r1+' 0 '+l+' 1 '+pt(r1,a1)+'L'+pt(r0,a1)+'A'+r0+' '+r0+' 0 '+l+' 0 '+pt(r0,a0)+'Z';
+  }
+  /* логотип: «о» — кольцо из шести зон */
+  document.querySelectorAll('.ring').forEach(function(s){
+    var c=['#2fb67c','#f2c230','#fb8c3c','#ea4f5a','#c23a9b','#7fd1ff'],h='';
+    for(var i=0;i<6;i++){var a0=-Math.PI/2+i*Math.PI/3+.09,a1=a0+Math.PI/3-.18;h+='<path d="'+arc(30,48,a0,a1)+'" fill="'+c[i]+'"/>'}
+    s.innerHTML=h;
+  });
+  /* роза */
+  var svg=document.querySelector('.rose'),R=104,r0=16,g='';
+  [25,50,75,100].forEach(function(p){g+='<circle r="'+(r0+(R-r0)*p/100)+'" fill="none" stroke="#e3eaf1" stroke-width="1" stroke-dasharray="'+(p===100?'0':'2 4')+'"/>'});
+  svg.innerHTML=g;
+  var segs=ZONES.map(function(z,i){
+    var p=document.createElementNS(NS,'path');p.setAttribute('fill',col(z[1]));svg.appendChild(p);
+    var a=-Math.PI/2+i*Math.PI/3+Math.PI/6, t=document.createElementNS(NS,'text');
+    t.setAttribute('x',(R+12)*Math.cos(a));t.setAttribute('y',(R+12)*Math.sin(a)+4);
+    t.setAttribute('text-anchor',Math.abs(Math.cos(a))<.2?'middle':Math.cos(a)>0?'start':'end');
+    t.setAttribute('font-size','9.5');t.setAttribute('fill','#3d5a70');t.setAttribute('font-family','Onest, sans-serif');t.textContent=z[0];
+    return p;
+  });
+  var bars=document.querySelector('.bars');
+  var sorted=ZONES.map(function(z,i){return [z[0],z[1],i]}).sort(function(a,b){return b[1]-a[1]});
+  var rows=sorted.map(function(z){
+    var d=document.createElement('div');d.className='bar';
+    d.innerHTML='<span>'+z[0]+'</span><span class="t"><i style="background:'+col(z[1])+'"></i></span><b>0%</b>';
+    bars.appendChild(d);return d;
+  });
+  function draw(k){
+    ZONES.forEach(function(z,i){
+      var a0=-Math.PI/2+i*Math.PI/3+.035,a1=a0+Math.PI/3-.07,rr=r0+(R-r0)*z[1]/100*k;
+      segs[i].setAttribute('d',arc(r0,Math.max(r0+.5,rr),a0,a1));
+    });
+    rows.forEach(function(d,j){d.querySelector('i').style.width=(sorted[j][1]*k)+'%';d.querySelector('b').textContent=Math.round(sorted[j][1]*k)+'%'});
+  }
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){draw(1);return}
+  draw(0);var t0=null;
+  function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0-400)/1600);k=k<0?0:1-Math.pow(1-k,3);draw(k);if(k<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})();
+</script>
+</body>
+</html>
