@@ -1,0 +1,63 @@
+<!-- Кнопки: по нажатию превращается в полосу загрузки до 100%. Uiverse.io, автор Tsiangana, лицензия MIT. -->
+<button class="uv-download-progress-button">
+  <span class="uv-download-progress-one">Download 0%</span>
+  <span class="uv-download-progress-two">100%</span>
+</button>
+
+<style>
+/* From Uiverse.io by Tsiangana. MIT License */
+
+.uv-download-progress-button {
+  width: 140px;
+  height: 45px;
+  border-radius: 30em;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
+  background: #ff135a;
+  border: 3px solid #fff;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  transition: 0.6s ease-in;
+}
+
+.uv-download-progress-button:hover {
+  background: #fff;
+}
+
+.uv-download-progress-button .uv-download-progress-two {
+  display: none;
+}
+
+.uv-download-progress-button::before {
+  content: "";
+  width: 0;
+  height: 50px;
+  border-radius: 30em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.uv-download-progress-button:hover::before {
+  width: 140px;
+  transition: 3s linear;
+}
+
+.uv-download-progress-button:hover .uv-download-progress-one {
+  display: none;
+}
+
+.uv-download-progress-button:hover .uv-download-progress-two {
+  display: inline;
+}
+</style>

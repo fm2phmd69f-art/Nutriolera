@@ -1,0 +1,51 @@
+<!-- Кнопки: «Добавить в календарь» с иконкой. Uiverse.io, автор andrew-demchenk0, лицензия MIT. -->
+<button class="uv-add-calendar-button">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="uv-add-calendar-svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff"><rect y="5" x="4" width="16" rx="2" height="16"></rect><path d="m8 3v4"></path><path d="m16 3v4"></path><path d="m4 11h16"></path></g></svg>
+  <span class="uv-add-calendar-lable">Add to Calendar</span>
+</button>
+
+<style>
+/* From Uiverse.io by andrew-demchenk0. MIT License */
+
+.uv-add-calendar-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 12px;
+  gap: 8px;
+  height: 40px;
+  width: 201px;
+  border: none;
+  background: #FF342B;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.uv-add-calendar-lable {
+  line-height: 22px;
+  font-size: 17px;
+  color: #fff;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+.uv-add-calendar-button:hover {
+  background: #e52e26;
+}
+
+.uv-add-calendar-button:hover .uv-add-calendar-svg-icon {
+  animation: uv-add-calendar-slope 1s linear infinite;
+}
+
+@keyframes uv-add-calendar-slope {
+  0% {
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+  }
+}
+</style>

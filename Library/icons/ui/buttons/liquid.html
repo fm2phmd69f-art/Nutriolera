@@ -1,0 +1,80 @@
+<!-- Кнопки: капля заливки перетекает внутри. Uiverse.io, автор pradipkaityuiux, лицензия MIT. -->
+<button class="uv-liquid-button">
+  <span>Subscribe</span>
+</button>
+
+<style>
+/* From Uiverse.io by pradipkaityuiux. MIT License */
+
+.uv-liquid-button {
+  background-color: #000fdb;
+  border: none;
+  padding: 20px 48px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 40px;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.uv-liquid-button span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.uv-liquid-button::before, .uv-liquid-button::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  z-index: -1;
+  background-color: #535fff;
+  transition: all 0.3s 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.uv-liquid-button::after {
+  right: -30px;
+  transform: translateX(30px) translateY(-110px) rotate(30deg);
+}
+
+.uv-liquid-button::before {
+  left: -20px;
+  transform: translateX(-10px) translateY(50px) rotate(30deg);
+}
+
+.uv-liquid-button:hover::before {
+  transform: rotate(30deg) translateY(10px) translateX(-15px);
+}
+
+.uv-liquid-button:hover::after {
+  transform: rotate(30deg) translateY(-70px) translateX(-30px);
+}
+
+.uv-liquid-button:hover {
+  animation: uv-liquid-wobel 0.3s ease-in-out;
+}
+
+@keyframes uv-liquid-wobel {
+  0% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1.1);
+  }
+
+  60% {
+    transform: scale(1.05);
+  }
+
+  80% {
+    transform: scale(0.85);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+</style>

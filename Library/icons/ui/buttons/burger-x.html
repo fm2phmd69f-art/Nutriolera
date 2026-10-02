@@ -1,0 +1,77 @@
+<!-- Кнопки: иконка меню превращается в крестик. Uiverse.io, автор MopokD71304, лицензия MIT. -->
+<div class="uv-burger-x-nav_bar">
+  <div class="uv-burger-x-bar1"></div>
+  <div class="uv-burger-x-bar2"></div>
+  <div class="uv-burger-x-bar3_h"></div>
+  <div class="uv-burger-x-bar4"></div>
+</div>
+
+<style>
+/* From Uiverse.io by MopokD71304. MIT License */
+
+.uv-burger-x-nav_bar {
+  background-color: rgb(27, 27, 27);
+  position: relative;
+  display: flex;
+  transition: 0.4s;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px 15px;
+  border-radius: 15px;
+}
+
+.uv-burger-x-bar1 {
+  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  width: 50px;
+  margin-bottom: 15px;
+  transition: 0.4s;
+  height: 5px;
+}
+
+.uv-burger-x-bar2 {
+  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  width: 50px;
+  position: absolute;
+  transition: 0.4s;
+  height: 5px;
+}
+
+.uv-burger-x-bar3_h {
+  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  width: 50px;
+  transition: 0.4s;
+  height: 5px;
+}
+
+.uv-burger-x-bar4 {
+  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  width: 50px;
+  margin-top: 15px;
+  transition: 0.4s;
+  height: 5px;
+}
+
+.uv-burger-x-nav_bar:hover {
+  border-radius: 50px;
+}
+.uv-burger-x-nav_bar:hover .uv-burger-x-bar3_h {
+  transform: rotate(-45deg);
+}
+.uv-burger-x-nav_bar:hover .uv-burger-x-bar2 {
+  transform: rotate(45deg);
+}
+
+.uv-burger-x-nav_bar:hover .uv-burger-x-bar1 {
+  opacity: 0;
+  width: 30px;
+}
+.uv-burger-x-nav_bar:hover .uv-burger-x-bar4 {
+  opacity: 0;
+  width: 30px;
+}
+</style>
