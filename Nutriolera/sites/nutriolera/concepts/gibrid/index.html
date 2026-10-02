@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nutriolera — карта зон внимания для зубов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Onest:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#08304c; --ink-2:#4a6478; --helper:#7b8794; --paper:#fff; --line:#e3eaf1;
+  --sky-1:#8fb2d3; --sky-2:#c9dcee;
+  --blue:#2597d0; --fuchsia:#c23a9b;
+  --g:#2fb67c; --y:#f2c230; --o:#fb8c3c; --r:#ea4f5a;
+  --round:"M PLUS Rounded 1c", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --text:"Onest", -apple-system, "Segoe UI", sans-serif;
+  --hand:"Caveat", "Comic Sans MS", cursive;
+  --air:0 17px 37px rgba(16,55,132,.06),0 67px 67px rgba(16,55,132,.05),0 0 0 1px rgba(8,48,76,.05);
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--text);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:10px}
+
+.hero{position:relative;min-height:100svh;padding:0 32px 72px;
+  background:linear-gradient(180deg,#9dbcdb 0%,#c3d8ec 34%,#e7f0f8 62%,#fff 100%)}
+nav{max-width:1240px;margin:0 auto;height:84px;display:flex;align-items:center;gap:30px}
+.logo{font-family:var(--round);font-weight:800;font-size:27px;letter-spacing:-.045em;display:inline-flex;align-items:baseline;line-height:1}
+.logo svg{width:.66em;height:.66em;margin:0 .02em;transform:translateY(.02em)}
+.links{display:flex;gap:28px;margin-left:auto;font-size:15px;font-weight:500;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;gap:12px;height:46px;padding:0 22px;border-radius:100px;background:var(--ink);color:#fff;font:500 15px/1 var(--text);
+  box-shadow:0 1px 2px rgba(8,48,76,.14),0 3px 3px rgba(8,48,76,.1),0 8px 10px rgba(8,48,76,.08);transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px);background:#0b3d61}
+.btn.big{height:62px;padding:0 10px 0 30px;font-size:17px}
+.btn.big .price{height:44px;padding:0 16px;border-radius:100px;background:#fff;color:var(--ink);display:inline-flex;align-items:center;font-family:var(--round);font-weight:800;letter-spacing:-.02em}
+
+.grid{max-width:1240px;margin:56px auto 0;display:grid;grid-template-columns:1fr 1.02fr;gap:56px;align-items:center}
+h1{font-family:var(--round);font-weight:800;font-size:clamp(40px,5.3vw,74px);line-height:.98;letter-spacing:-.05em;text-wrap:balance}
+.lead{max-width:500px;margin-top:26px;font-size:18px;line-height:1.5;color:#29435a}
+.cta{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:12px;font-size:14px;line-height:1.35;color:var(--ink-2)}
+.who img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 14%;border:2px solid #fff;box-shadow:0 2px 6px rgba(8,48,76,.15)}
+.who b{display:block;color:var(--ink);font-weight:600}
+.zones{margin-top:44px;display:flex;flex-wrap:wrap;gap:8px}
+.zones span{height:34px;padding:0 14px;border-radius:100px;background:rgba(255,255,255,.7);border:1px solid rgba(8,48,76,.1);display:inline-flex;align-items:center;font-size:14px}
+
+/* живое демо */
+.demo{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.panel{background:#fff;border-radius:28px;box-shadow:var(--air);padding:24px}
+.q .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--helper)}
+.q .meta b{color:var(--ink);font-weight:600}
+.prog{height:4px;border-radius:4px;background:var(--line);margin:12px 0 20px;overflow:hidden}
+.prog i{display:block;height:100%;width:30%;background:var(--ink);border-radius:4px;transition:width .6s}
+.q h3{font-family:var(--round);font-weight:700;font-size:21px;line-height:1.18;letter-spacing:-.03em;min-height:75px}
+.opts{display:grid;gap:8px;margin-top:18px}
+.opts div{height:44px;padding:0 16px;border-radius:14px;border:1px solid var(--line);display:flex;align-items:center;font-size:14.5px;transition:background .25s,border-color .25s,color .25s}
+.opts div.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.res{padding:20px 20px 18px;margin-top:56px}
+.res h4{font-size:13px;font-weight:500;color:var(--helper);display:flex;justify-content:space-between}
+.res svg{display:block;width:100%;height:auto;margin:6px 0 10px}
+.res ul{list-style:none;padding:0;display:grid;gap:7px;font-size:13.5px}
+.res li{display:grid;grid-template-columns:10px 1fr auto;gap:8px;align-items:center}
+.res li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c,#ccc);transition:background .4s}
+.res li b{font-family:var(--round);font-weight:800;letter-spacing:-.02em}
+.res li.hot{font-weight:600}
+.hand{position:absolute;right:-6px;top:6px;font-family:var(--hand);font-size:26px;color:var(--fuchsia);transform:rotate(5deg);line-height:1;text-align:right}
+.hand svg{display:block;width:46px;height:40px;margin:2px 0 0 auto;transform:translateX(-30px)}
+
+@media (max-width:1000px){
+  .links{display:none}
+  .grid{grid-template-columns:1fr;margin-top:28px;gap:44px}
+  nav .btn{margin-left:auto}
+}
+@media (max-width:620px){
+  .hero{padding:0 16px 48px}
+  nav{height:72px;gap:12px}
+  .logo{font-size:23px}
+  nav .btn{height:42px;padding:0 16px;font-size:14px}
+  .lead{font-size:17px}
+  .btn.big{height:58px;font-size:16px;padding-left:24px}
+  .btn.big .price{height:40px}
+  .demo{grid-template-columns:1fr}
+  .res{margin-top:0}
+  .hand{right:4px;top:-28px;font-size:22px}
+  .hand svg{display:none}
+  .zones{margin-top:32px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <nav>
+    <a class="logo" href="#" aria-label="nutriolera">nutri<svg class="ring" viewBox="-50 -50 100 100" aria-hidden="true"></svg>lera</a>
+    <div class="links"><a href="#">Что внутри</a><a href="#">Автор</a><a href="#">Вопросы</a></div>
+    <a class="btn" href="#">Пройти тест</a>
+  </nav>
+
+  <div class="grid">
+    <div>
+      <h1>Как узнать, что разрушает зубы, ещё дочто разрушает зубы,&nbsp;— до&nbsp;следующей пломбыnbsp;следующей пломбы</h1>
+      <p class="lead">Ответьте на&nbsp;50 вопросов, и&nbsp;тест сам посчитает, где ваши привычки работают против зубов. Вы&nbsp;получите карту зон внимания, три первых шага, меню на&nbsp;3&nbsp;дня и&nbsp;видео от&nbsp;автора.</p>
+      <div class="cta">
+        <a class="btn big" href="#">Пройти тест <span class="price">2&nbsp;500&nbsp;₽</span></a>
+        <div class="who"><img src="../../photos/valeria-web.jpg" alt=""><span><b>Валерия Кухарь</b>нутрициолог, автор теста</span></div>
+      </div>
+      <div class="zones" aria-label="Зоны теста"><span>Питание</span><span>Напитки</span><span>Слюна</span><span>Гигиена</span><span>Образ жизни</span><span>Состояние зубов</span></div>
+    </div>
+
+    <div class="demo" aria-label="Как работает тест">
+      <div class="panel q">
+        <div class="meta"><span>Вопрос <b class="num">15</b> из&nbsp;50</span><span class="zone">Напитки</span></div>
+        <div class="prog"><i></i></div>
+        <h3 class="qt">Как долго вы&nbsp;пьёте один напиток, кроме воды?</h3>
+        <div class="opts"></div>
+      </div>
+      <div class="panel res">
+        <h4><span>Ваша карта</span><span>живой пример</span></h4>
+        <svg class="rose" viewBox="-110 -110 220 220" role="img" aria-label="Диаграмма зон внимания"></svg>
+        <ul class="list"></ul>
+      </div>
+      <div class="hand" aria-hidden="true">ответ меняет карту
+        <svg viewBox="0 0 46 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M40 2C40 20 30 32 6 36M6 36l9-8M6 36l10 4"/></svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function arc(r0,r1,a0,a1){function pt(r,a){return (r*Math.cos(a)).toFixed(2)+' '+(r*Math.sin(a)).toFixed(2)}
+    return 'M'+pt(r0,a0)+'L'+pt(r1,a0)+'A'+r1+' '+r1+' 0 0 1 '+pt(r1,a1)+'L'+pt(r0,a1)+'A'+r0+' '+r0+' 0 0 0 '+pt(r0,a0)+'Z'}
+  document.querySelectorAll('.ring').forEach(function(s){
+    var c=['#2fb67c','#f2c230','#fb8c3c','#ea4f5a','#c23a9b','#2597d0'],h='';
+    for(var i=0;i<6;i++){var a0=-Math.PI/2+i*Math.PI/3+.09;h+='<path d="'+arc(30,48,a0,a0+Math.PI/3-.18)+'" fill="'+c[i]+'"/>'}
+    s.innerHTML=h;
+  });
+  function col(p){return p<=25?'#2fb67c':p<=50?'#f2c230':p<=75?'#fb8c3c':'#ea4f5a'}
+  var NAMES=['Питание','Напитки','Слюна','Гигиена','Образ жизни','Зубы'];
+  var val=[24,38,44,18,31,22], shown=val.slice();
+  /* вопросы из теста: зона, текст, варианты, выбранный, итог зоны после ответа */
+  var Q=[
+    [1,15,'Как долго вы пьёте один напиток, кроме воды?',['Выпиваю сразу','20–30 минут','Около часа','Могу потягивать несколько часов'],3,61],
+    [2,17,'Бывает ли сухость или липкость во рту?',['Никогда','Редко','Несколько раз в неделю','Ежедневно'],2,52],
+    [3,23,'Как часто вы чистите межзубные промежутки?',['Ежедневно','Несколько раз в неделю','Несколько раз в месяц','Никогда'],0,11],
+    [0,2,'Едите ли вы между основными приёмами пищи?',['Практически никогда','1 раз в день','2–3 раза в день','Постоянно перекусываю'],2,33]
+  ];
+  var svg=document.querySelector('.rose'),R=100,r0=14,g='';
+  [25,50,75,100].forEach(function(p){g+='<circle r="'+(r0+(R-r0)*p/100)+'" fill="none" stroke="#e3eaf1" stroke-width="1" stroke-dasharray="'+(p===100?'0':'2 4')+'"/>'});
+  svg.innerHTML=g;
+  var segs=NAMES.map(function(){var p=document.createElementNS(NS,'path');svg.appendChild(p);return p});
+  var list=document.querySelector('.list');
+  function render(){
+    segs.forEach(function(p,i){var a0=-Math.PI/2+i*Math.PI/3+.04;p.setAttribute('d',arc(r0,Math.max(r0+.5,r0+(R-r0)*shown[i]/100),a0,a0+Math.PI/3-.08));p.setAttribute('fill',col(Math.round(shown[i])))});
+    var order=NAMES.map(function(n,i){return i}).sort(function(a,b){return val[b]-val[a]}).slice(0,3);
+    list.innerHTML=order.map(function(i,j){return '<li class="'+(j===0?'hot':'')+'" style="--c:'+col(Math.round(shown[i]))+'"><span>'+(j===0?'Основная зона: ':'')+NAMES[i]+'</span><b>'+Math.round(shown[i])+'%</b></li>'}).join('');
+  }
+  function tween(){var moving=false;for(var i=0;i<6;i++){var d=val[i]-shown[i];if(Math.abs(d)>.3){shown[i]+=d*.12;moving=true}else shown[i]=val[i]}render();if(moving)requestAnimationFrame(tween)}
+  var opts=document.querySelector('.opts'),qt=document.querySelector('.qt'),num=document.querySelector('.num'),zone=document.querySelector('.zone'),prog=document.querySelector('.prog i');
+  function show(k){var q=Q[k];qt.textContent=q[2];num.textContent=q[1];zone.textContent=NAMES[q[0]];prog.style.width=(q[1]/50*100)+'%';
+    opts.innerHTML=q[3].map(function(o){return '<div>'+o+'</div>'}).join('')}
+  function pick(k){var q=Q[k];opts.children[q[4]].classList.add('on');val[q[0]]=q[5];requestAnimationFrame(tween)}
+  render();show(0);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){pick(0);shown=val.slice();render();return}
+  var k=0;
+  setTimeout(function cycle(){pick(k);setTimeout(function(){k=(k+1)%Q.length;show(k);setTimeout(cycle,1300)},1500)},500);
+})();
+</script>
+</body>
+</html>
