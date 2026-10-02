@@ -1,0 +1,12 @@
+{
+  "name": "landly-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "shot": "node scripts/shot.mjs",
+    "photos": "node scripts/photos.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}
